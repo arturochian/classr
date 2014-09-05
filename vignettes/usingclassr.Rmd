@@ -1,0 +1,19 @@
+---
+title: "Using the classr Package"
+author: "Homer White"
+date: "09/05/2014"
+output: pdf_document
+---
+
+<!--
+%\VignetteEngine{knitr}
+%\VignetteIndexEntry{classr}
+-->
+
+Do stuff like this:
+
+```{r eval=FALSE}
+Collect(studentfile="students.txt",dom="WORKGRP",inst="jdoe1",assign="HW01")
+```
+
+Got it?

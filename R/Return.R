@@ -4,7 +4,8 @@
 #' homework directory and places it the student's returned directory.
 #' 
 #' @rdname Return
-#' @usage Return(studentfile=NULL,dom=NULL,inst=NULL,assign=NULL,key=NULL,passwordfile=NULL,flag="_com")
+#' @usage Return(studentfile=NULL,dom=NULL,inst=NULL,assign=NULL,
+#'            key=NULL,passwordfile=NULL,flag="_com")
 #' @param studentfile Text file containing student usernames, one per line.
 #' @param dom the domain name
 #' @param inst instructor's username

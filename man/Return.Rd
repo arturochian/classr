@@ -3,7 +3,8 @@
 \alias{Return}
 \title{Return an Assignment to the Class}
 \usage{
-Return(studentfile=NULL,dom=NULL,inst=NULL,assign=NULL,key=NULL,passwordfile=NULL,flag="_com")
+Return(studentfile=NULL,dom=NULL,inst=NULL,assign=NULL,
+           key=NULL,passwordfile=NULL,flag="_com")
 }
 \arguments{
 \item{studentfile}{Text file containing student usernames, one per line.}
