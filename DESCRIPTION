@@ -1,0 +1,9 @@
+Package: classr
+Type: Package
+Title: What the package does (short line)
+Version: 0.1
+Date: 2014-09-04
+Author: Scott Switzer and Homer White
+Maintainer: Homer White <hwhite0@georgetowncollege.edu>
+Description: More about what it does (maybe more than one line)
+License: GPL (>=3)

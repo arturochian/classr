@@ -1,0 +1,16 @@
+{
+    "contents" : "#' @title Create Directories for the Class\n\n#' @description Creates submit, returned and mynotes directories in students' Home folders.\n#' \n#' @rdname createDirectories\n#' @usage createDirectories(studentfile=NULL,dom=NULL,key=NULL,passwordfile=NULL)\n#' @param studentfile Text file containing student usernames, one per line.\n#' @param dom the domain name\n#' @param key Your key to decrypt your password\n#' @param passwordfile File containing your encrypted password.\n#' @return Side effects:  creation of directories.\n#' @export\n#' @author Scott Switzer and Homer White \\email{hwhite0@@georgetowncollege.edu}\n#' @examples\n#' \\dontrun{\n#' createDirectories(studentfile=\"students.txt\",dom=\"WORK\",\n#'      key=\"loveR\",passwordfile=\"myLittleSecret.txt\")\n#' }\ncreateDirectories <- function(studentfile=NULL,dom=NULL,key=NULL,passwordfile=NULL) {\n  \n  if (is.null(studentfile) | is.null(passwordfile) | is.null(key)) {\n    stop(\"Must provide student file, your key and the password file.\")\n  }\n  \n  scriptPath <- system.file(\"createdirectories.pl\",package=\"classr\")\n  #scriptPath <- \"inst/createdirectories.pl\"\n  comm <- paste0(\"perl \",scriptPath,\n                 \" --studentfile=\",studentfile,\n                 \" --domainname=\",dom,\n                 \" --key=\",key,\n                 \" --passwordfile=\",passwordfile)\n  system(comm)\n}\n",
+    "created" : 1409926697077.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1071411372",
+    "id" : "A86656A2",
+    "lastKnownWriteTime" : 1409926840,
+    "path" : "~/classr/R/createDirectories.R",
+    "project_path" : "R/createDirectories.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

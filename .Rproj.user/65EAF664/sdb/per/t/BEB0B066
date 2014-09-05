@@ -1,0 +1,16 @@
+{
+    "contents" : "#' @title Create the Password File\n\n#' @description Creates a file conaining an encryption of your password.  The decyption is performed using a key\n#' that you choose.  Clear your R history after using this function.\n#' \n#' @rdname createPasswordFile\n#' @usage createPasswordFile(password=NULL,file=\"myPasswordFile.txt\",key=NULL)\n#' @param password Your password, as a charater string.\n#' @param file name of the file in which to store the encrypted password. \n#' Should reside in your Home directory.\n#' @param key The key to be supplied to other functions to decrypt the password.\n#' @return Only the side effect:  the password file.\n#' @export\n#' @author Scott Switzer and Homer White \\email{hwhite0@@georgetowncollege.edu}\n#' @examples\n#' \\dontrun{\n#' createPasswordFile(password=\"yoyo68peewee\",file=\"myLittleSecret.txt\",key=\"loveR\")\n#' }\ncreatePasswordFile <- function(password=NULL,file=\"myPasswordFile.txt\",key=NULL) {\n  \n  if (is.null(password) | is.null(key)) stop(\"Must provide your password and a key.\")\n  \n  scriptPath <- system.file(\"createpasswordfile.pl\",package=\"classr\")\n  #scriptPath <- \"inst/createpasswordfile.pl\"\n  comm <- paste0(\"perl \",scriptPath,\n                 \" --password=\",password,\n                 \" --file=\",file,\n                 \" --key=\",key)\n  system(comm)\n  cat(\"\\nYou should now clear your R History.\\n\")\n}\n",
+    "created" : 1409928116586.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2371813498",
+    "id" : "BEB0B066",
+    "lastKnownWriteTime" : 1409928210,
+    "path" : "~/classr/R/createPasswordFile.R",
+    "project_path" : "R/createPasswordFile.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
