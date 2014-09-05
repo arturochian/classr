@@ -3,7 +3,7 @@
 \alias{Collect}
 \title{Collect an Assignment from the Class}
 \usage{
-Collect(studentfile=NULL,dom=NULL,inst=NULL,assign=NULL,email=NULL)
+Collect(studentfile=NULL,dom=NULL,inst=NULL,assign=NULL)
 }
 \arguments{
 \item{studentfile}{Text file containing student usernames, one per line.}
@@ -13,8 +13,6 @@ Collect(studentfile=NULL,dom=NULL,inst=NULL,assign=NULL,email=NULL)
 \item{inst}{instructor's username}
 
 \item{assign}{code for the assignment to be collected}
-
-\item{email}{Receive an email confirming results?}
 }
 \value{
 Side effects: graded copy returned to student, with permissions set so student can

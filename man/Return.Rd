@@ -3,12 +3,14 @@
 \alias{Return}
 \title{Return an Assignment to the Class}
 \usage{
-Return(studentfile=NULL,dom=NULL,assign=NULL,key=NULL,passwordfile=NULL,flag="_com",email=NULL)
+Return(studentfile=NULL,dom=NULL,inst=NULL,assign=NULL,key=NULL,passwordfile=NULL,flag="_com")
 }
 \arguments{
 \item{studentfile}{Text file containing student usernames, one per line.}
 
 \item{dom}{the domain name}
+
+\item{inst}{instructor's username}
 
 \item{assign}{code for the assignment to be returned}
 
@@ -17,8 +19,6 @@ Return(studentfile=NULL,dom=NULL,assign=NULL,key=NULL,passwordfile=NULL,flag="_c
 \item{passwordfile}{File containing your encrypted password.}
 
 \item{flag}{the tag at the end of the file-name that identifies the copy with your comments.}
-
-\item{email}{Receive an email confirming results?}
 }
 \value{
 Side effects: graded copy returned to student, with permissions set so student can
@@ -30,7 +30,7 @@ homework directory and places it the student's returned directory.
 }
 \examples{
 \dontrun{
-Return(studentfile="students.txt",dom="WORK", assign="HW01",
+Return(studentfile="students.txt",dom="WORK", inst="jdoe1",assign="HW01",
      key="loveR",passwordfile="myLittleSecret.txt",flag="_com")
 }
 }

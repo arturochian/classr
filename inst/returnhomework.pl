@@ -21,13 +21,13 @@ my($permissions) = "770";
 
 sub showUsage {
 
-print "\nUSAGE: perl returnhomework.pl --path=<name> --flag=<name> --studentfile=<filename> \n --domainname=<domain> Optional Parameters:\n\n[--email=<email address> (Email for submission report) --key=<password file key> --passwordfile=<password file>]\n\n";
+print "\nUSAGE: perl returnhomework.pl --path=<name> --flag=<name> --instructor=<name> --studentfile=<filename> \n --domainname=<domain> Optional Parameters:\n\n[--email=<email address> (Email for submission report) --key=<password file key> --passwordfile=<password file>]\n\n";
 exit;
 
 }
 
 
-my($path,$flag,$studentfile,$destinationRoot,$sendEmail,$recipientAddress,$key,$passwordFile,$decryptedPassword,$userDirective,$domainname);
+my($path,$flag,$studentfile,$destinationRoot,$sendEmail,$recipientAddress,$key,$passwordFile,$decryptedPassword,$userDirective,$domainname,$instructor);
 
 $sendEmail = FALSE;
 
@@ -50,8 +50,14 @@ foreach my $item(@ARGV) {
     $userDirective = $domainname;
         }
 
+  if ($item =~ m/--instructor=/i) {
+                $instructor = substr($item,13,length($item)-13);
+        }
+
+
  	if ($item =~ m/--path=/i) {
-		 $path = substr($item,7,length($item)-7);                
+		 $path = substr($item,7,length($item)-7); 
+     $path = $sourceRoot . "/" . $domainname . "/" . $instructor . "/" . "homework/" . $path . "/";
         }
 
 	if ($item =~ m/--destination=/i) {
