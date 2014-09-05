@@ -27,7 +27,7 @@ exit;
 }
 
 
-my($path,$flag,$studentfile,$destinationRoot,$sendEmail,$recipientAddress,$key,$passwordFile,$decryptedPassword);
+my($path,$flag,$studentfile,$destinationRoot,$sendEmail,$recipientAddress,$key,$passwordFile,$decryptedPassword,$userDirective);
 
 $sendEmail = FALSE;
 
@@ -143,7 +143,7 @@ while (<$INPUTFILE>) {
 
                 $destinationFolder = $destinationFolder . "/";
 
- 		my($securityToken) = $userDirective . $inputLine . ":" . $group;
+ 		my($securityToken) = $userDirective . "\\\\" . $inputLine . ":" . $group;
         	
                 system ("cp -f $projectFile $destinationFolder");
 		

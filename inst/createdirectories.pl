@@ -54,7 +54,7 @@ foreach my $item(@ARGV) {
 
   if ($item =~ m/--domainname=/i) {
     $domainname = substr($item,13,length($item)-13);
-    $userDirective = $domainname; 
+    $userDirective = $domainname . "\\\\";
   }
   
   if ($item =~ m/--key=/i) {
