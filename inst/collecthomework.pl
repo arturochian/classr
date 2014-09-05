@@ -95,7 +95,7 @@ while (<$INPUTFILE>) {
 
 
 
-        my(@searchFolders) = ($sourceRoot . "/" $domainname . "/" . $inputLine . "/submit");
+        my(@searchFolders) = ($sourceRoot . "/" . $domainname . "/" . $inputLine . "/submit");
 	my(@foundProjects);
 
         find( sub { push @foundProjects, $File::Find::name if /$assignment/i }, @searchFolders);

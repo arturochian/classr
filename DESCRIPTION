@@ -1,6 +1,6 @@
 Package: classr
 Type: Package
-Title: Class management function for an R Studio server environment.
+Title: Class-Management Functions
 Version: 0.1
 Date: 2014-09-05
 Authors@R: c( person("Homer", "White", email =

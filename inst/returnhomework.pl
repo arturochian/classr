@@ -27,7 +27,7 @@ exit;
 }
 
 
-my($path,$flag,$studentfile,$destinationRoot,$sendEmail,$recipientAddress,$key,$passwordFile,$decryptedPassword,$userDirective);
+my($path,$flag,$studentfile,$destinationRoot,$sendEmail,$recipientAddress,$key,$passwordFile,$decryptedPassword,$userDirective,$domainname);
 
 $sendEmail = FALSE;
 
