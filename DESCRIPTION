@@ -9,6 +9,7 @@ Authors@R: c( person("Homer", "White", email =
 Maintainer: Homer White <hwhite0@georgetowncollege.edu>
 Description: This package enables instructors to perform simple class
     management operations from the command line on the R Studio server. The
-    server must have perl installed, along with the Crypt::RC4 module.
+    server must have perl installed, along with the Crypt::RC4 and File::Find
+    modules.
 License: GPL (>=3)
 VignetteBuilder: knitr
