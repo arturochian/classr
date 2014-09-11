@@ -139,3 +139,19 @@ Return(studentfile="students.txt",dom="WORKGRP", inst="jdoe1",assign="HW01",
 You can return as often as you like.  Newer version of your graded copy will overwrite older ones.
 
 Once again, you should clear your R History after each call of the `Return()` function.
+
+## Reports
+
+You can generate reports on how which students have submitted assignments of a given type.  Use the function `SubmissionReport()` as follows:
+
+* Suppose that the type of assignment has a code "HW" in its file name. You might be looking for assignments with "HW01", "HW02", ... in their file-names.
+* Suppose also that the path to the folder containing assignment of this this type is:  `homework/mat331`.
+* Finally, suppose that the students for whom you desire the report are in the file "students.txt".
+
+Then run the following command:
+
+```{r eval=FALSE}
+myReport <- SubmissionReport(studentfile="students.txt",folder="homework/mat331",assigntype="HW")
+```
+
+The report is now in your global Environment as the data frame `myReport`.

@@ -2,5 +2,6 @@
 
 export(Collect)
 export(Return)
+export(SubmissionReport)
 export(createDirectories)
 export(createPasswordFile)
