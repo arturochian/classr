@@ -26,7 +26,7 @@ SubmissionReport <- function(studentfile=NULL,folder=NULL,assigntype=NULL) {
   usernames <- readLines(con=conn)
   
   #now clean up, for files created by pasting in from Windows:  needs testing
-  #usernames <- gsub(pattern="\\cM\\cJ|\\cM|\\cJ",replacement="\n",x=usernames,perl=TRUE)
+  #usernames <- gsub(pattern='\\cM\\cJ|\\cM|\\cJ',replacement="\n",x=usernames,perl=TRUE)
   
   fr <- data.frame(usernames)
   
