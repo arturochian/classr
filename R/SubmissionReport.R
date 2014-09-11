@@ -20,10 +20,13 @@ SubmissionReport <- function(studentfile=NULL,folder=NULL,assigntype=NULL) {
     stop("Must provide student file, assignment folder and code for the type of assignment.")
   }
   
-  options(warn=-1) # suppress the warning message about incomplet efinal line in studentfile
+  options(warn=-1) # suppress the warning message about incomplete final line in studentfile
   
   conn <- file(studentfile,"r")
   usernames <- readLines(con=conn)
+  
+  #now clean up, for files created by pasting in from Windows:  needs testing
+  #usernames <- gsub(pattern="\\cM\\cJ|\\cM|\\cJ",replacement="\n",x=usernames,perl=TRUE)
   
   fr <- data.frame(usernames)
   
