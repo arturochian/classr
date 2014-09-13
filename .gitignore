@@ -3,5 +3,5 @@
 students.txt
 myfile.txt
 classr.Rproj
-.Rproj.user
-.RData
+.Rproj.user/
+.RData/
