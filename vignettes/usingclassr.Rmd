@@ -1,0 +1,157 @@
+<!--
+%\VignetteEngine{knitr}
+%\VignetteIndexEntry{classr}
+-->
+
+#  Using the classr Package
+
+## Introduction
+
+The `classr` package is designed to automate certain forms of communication between instructors and students in classes that make use of the R Studio server.  Functions that the package currently performs are:
+
+* collection of assignments from all students on a class list provided by the instructor, with a report as to which students turned in the assignment;
+* return of graded copies of these assignments.
+
+Future versions of the package may include additional functions such as:
+
+* publishing a file or directory to the Home folder of each student in the class;
+* generating reports on assignment turn-in for each student, at the current point in the semester.
+
+Content management systems such as Moodle or Blackboard provide similar course management facilities, but since the grading of assignment R-based classes is best done in R itself, there is some benefit to having the collection and return process take place within the environment of the R Studio server.
+
+
+## Prerequisites
+
+### Installation
+
+The current version of package is based on Perl scripts that are located in the `inst` directory of the package in its source form.  Accordingly the Perl language must be installed on the server.The current version of `classr` has been tested on a Cent OS server with Perl 5.10.1.
+
+Two Perl modules are also required:
+
+* `Crypt::RC4`, to encrypt passwords;
+* `File::Find`, for certain file-search operations.
+
+`File::Find` should be included in your server's installation of Perl, but you may have to ask your sysadmin to install `Crypt::RC4`.  In the shell this can be done with:
+
+```
+sudo cpan File::Find
+```
+
+As for installation of the package itself, check that package `devtools` is installed on your system.  Then restart your r session and run the following command:
+
+```{r eval=FALSE}
+devtools::install_github("homerhanumat/classr")
+```
+
+This installs the package in your User Library.  (It will do no good for the sysadmin to install the `classr` in the System Library:  access to the Perl scripts in the package requires certain permissions that you will not have when calling the package functions from your R session on the server.)
+
+### Permissions
+
+Although you do not directly exercise administrative permissions when calling the package functions, you do require them nonetheless.  Your sysadmin has to be willing to grant them to you, or you can't use `classr` for very much.
+
+### Know the Directory Tree
+
+You need to know the structure of the directory tree to which the Home directories of you and your students belong. On a typical setting the Home directories might have path-names of the following form:
+
+`/home/domain/username`
+
+We assume here that you and your students are both in `/home/domain`.  Make sure that your know the `domain`.
+
+## Setting Up
+
+### Student File
+
+First of all, you should create a text file consisting of the network usernames of each student in your course, one username per line, like this:
+
+```
+abennet1
+bjones
+hwickham5
+```
+
+Name it as you please --- `students.txt`, say --- and save it in your Home directory.
+
+### Password Encryption
+ 
+You are going to create some sub-directories in Home directories of your students, so for this you will need to act as a superuser.  This action will in turn require you to provide your password to the computer.  For security reasons, you don't want to send out the password every time you perform a superuser action, so you need to encrypt your password and provide a key in its place.
+
+This task is accomplished by the `createPasswordFile()` function, used perhaps as follows.  Suppose that you desire to encrypt your (rather weak) password "gibberish267" into a file called "myLittleSecret.txt", to be accessed with the key "handydandy".  Then run:
+
+```{r eval=FALSE}
+createPasswordFile(password="gibberish267",file="myLittleSecret.txt",key="handydandy")
+```
+
+You will be advised to clear your R history after the command has run:  **please follow this advice**.  For security reasons is it best not to leave electronic traces of your password lying about.
+
+**Note that whenver you change your network password, you must re-create your password file.**
+
+### Directory Creation
+
+The final step in set-up is to establish directories in the Home folders of each of your students:
+
+* a `submit` directory, into which students will save homework assignments;
+* a `returned` directory, into which copies of the graded homework are placed;
+* a `mynotes` directory, provided to as a gentle reminder to students to establish a sensible directory structure to organize course material.
+
+Suppose that your domain name is "WORKGRP".  Then you will run the following function:
+
+```{r eval=FALSE}
+createDirectories(studentfile="students.txt",dom="WORKGRP",
+     key="handydandy",passwordfile="myLittleSecret.txt")
+```
+
+Note that the domain name was supplied.  As an additional security precaution, clear your R History:  it is a good idea not to let the general public know more than it needs to know about the server's directory-tree.
+
+
+## Collection
+
+Say that the students are putting the first homework assignment into their submit folder.  Tell them to name their according to some strict convention, such as:
+
+`HW01_username.Rmd`.
+
+The sub-string "HW01" serves as identifier for the assignment, to distinguish it from other assignments that have been or will be saved into the `submit` folder.  To collect the Homework # 1 papers, simply run:
+
+```{r eval=FALSE}
+Collect(studentfile="students.txt",dom="WORKGRP",inst="jdoe1",assign="HW01")
+```
+
+We assume here that your username is "jdoe1".  You supply your username in order to direct the papers into your own Home folder.
+
+Again, note that you supplied your domain name.  It is advisable to clear your R History.
+
+On your first collection, a `homework` directory is created in your Home folder.  The HW01 assignments will be in a sub-directory called `HW01`.  Further sub-directories separate the students' papers from each other.
+
+You can run `Collect()` as many times as you like:  just bear in mind that if a student revises his/her assignment between two collections, the second collection will overwrite the old paper with the newer version.
+
+## Returning Papers
+
+Open each HW in turn and grade it.  Save you graded copy with a flag of your choice, perhaps "_com", so that the file now looks like:
+
+`HW01_username_com.Rmd`.
+
+When you are ready to return graded assignments, run the following function:
+
+```{r eval=FALSE}
+Return(studentfile="students.txt",dom="WORKGRP", inst="jdoe1",assign="HW01",
+     key="handydandy",passwordfile="myLittleSecret.txt",flag="_com")
+```
+
+You can return as often as you like.  Newer version of your graded copy will overwrite older ones.
+
+Once again, you should clear your R History after each call of the `Return()` function.
+
+## Reports
+
+You can generate reports on how which students have submitted assignments of a given type.  Use the function `SubmissionReport()` as follows:
+
+* Suppose that the type of assignment has a code "HW" in its file name. You might be looking for assignments with "HW01", "HW02", ... in their file-names.
+* Suppose also that the path to the folder containing assignment of this this type is:  `homework/mat331`.
+* Finally, suppose that the students for whom you desire the report are in the file "students.txt".
+
+Then run the following command:
+
+```{r eval=FALSE}
+myReport <- SubmissionReport(studentfile="students.txt",folder="homework/mat331",assigntype="HW")
+```
+
+The report is now in your global Environment as the data frame `myReport`.
