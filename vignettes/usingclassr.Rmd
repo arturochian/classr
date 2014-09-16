@@ -1,7 +1,11 @@
-<!--
-%\VignetteEngine{knitr}
-%\VignetteIndexEntry{classr}
--->
+---
+title: "Usgin classr"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{Using classr}
+  %\usepackage[utf8]{inputenc}
+  ---
 
 #  Using the classr Package
 
