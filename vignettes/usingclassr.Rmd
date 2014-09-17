@@ -173,4 +173,6 @@ DropBomb(dom="WORK", user="jdoe1",assign="HW01",key="loveR",
        passwordfile="myLittleSecret.txt")
 ```
 
+If the affected user was logged in during the execution of this function, then the user should restart his/her R session in order to recover all capabilities of the R Studio environment.
+
 As usual, it is best to clear your history after running this command.

@@ -1,8 +1,8 @@
 Package: classr
 Type: Package
 Title: Course-Management Functions
-Version: 0.1-1
-Date: 2014-09-10
+Version: 0.1-2
+Date: 2014-09-17
 Authors@R: c( person("Homer", "White", email =
     "hwhite0@georgetowncollege.edu",role = c("aut", "cre")), person("Scott",
     "Switzer", email = "Scott_Switzer@georgetowncollege.edu",role = "aut"))
@@ -10,6 +10,7 @@ Maintainer: Homer White <hwhite0@georgetowncollege.edu>
 Description: This package enables instructors to perform simple class
     management operations from the command line on the R Studio server. The
     server must have perl installed, along with the Crypt::RC4 and File::Find
-    modules.
+    modules, and the package itself should be installed in the User Library.
+    Administrative privileges are required for most of the package functions.
 License: GPL (>=3)
 VignetteBuilder: knitr
