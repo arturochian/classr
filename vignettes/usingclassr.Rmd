@@ -159,3 +159,18 @@ myReport <- SubmissionReport(studentfile="students.txt",folder="homework/mat331"
 ```
 
 The report is now in your global Environment as the data frame `myReport`.
+
+## Deleting the .rstudio Folder
+
+Sometimes a user has persistent problems that are related to settings for the "state" of the R Studio environment for that user.  This information is stored in the hidden `.rstudio` directory of the user's Home folder.  If this folder is deleted, then the user retains his or her saved files, work-space and R history, but in all other respects it is as if he/she had never logged on to R Studio.
+
+When all other corrective measures (e.g., log out, log back in, restart R session) have failed, consider deleting the .rstudio folder.
+
+The user should log out first.  Then run something like:
+
+```{r eval=FALSE}
+DropBomb(dom="WORK", user="jdoe1",assign="HW01",key="loveR",
+       passwordfile="myLittleSecret.txt")
+```
+
+As usual, it is best to clear your history after running this command.
