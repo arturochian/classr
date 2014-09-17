@@ -27,7 +27,8 @@ DropBomb <- function(dom=NULL,user=NULL,key=NULL,passwordfile=NULL) {
   confirmed <- readline(question)
   
   if (confirmed=="y") {
-    comm <- paste0("perl deleterstudiodir.pl",
+    scriptPath <- system.file("deleterstudiodir.pl",package="classr")
+    comm <- paste0("perl ", scriptPath,
                  " --domainname=",dom,
                  " --user=",user,
                  " --key=",key,
