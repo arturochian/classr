@@ -44,10 +44,10 @@ sudo cpan File::Find
 As for installation of the package itself, check that package `devtools` is installed on your system.  Then restart your r session and run the following command:
 
 ```{r eval=FALSE}
-devtools::install_github("homerhanumat/classr")
+devtools::install_github("homerhanumat/classr",build_vignetttes=TRUE)
 ```
 
-This installs the package in your User Library.  (It will do no good for the sysadmin to install the `classr` in the System Library:  access to the Perl scripts in the package requires certain permissions that you will not have when calling the package functions from your R session on the server.)
+This installs the package in your User Library.  Alternatively, your sysadmin could install the package into the System library.
 
 ### Permissions
 
