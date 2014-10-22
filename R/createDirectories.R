@@ -22,7 +22,7 @@ createDirectories <- function(studentfile=NULL,dom=NULL,key=NULL,passwordfile=NU
     stop("Must provide student file, your key and the password file.")
   }
   
-  scriptPath <- system.file("createdirectories.pl",package="classr")
+  scriptPath <- system.file("perl","createdirectories.pl",package="classr")
   #scriptPath <- "inst/createdirectories.pl"
   comm <- paste0("perl ",scriptPath,
                  " --studentfile=",studentfile,

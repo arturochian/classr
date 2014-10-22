@@ -23,7 +23,7 @@ Collect <- function(studentfile=NULL,dom=NULL,inst=NULL,assign=NULL) {
     stop("Must provide student file, domain name, instructor username and the assignment code.")
   }
   
-  scriptPath <- system.file("collecthomework.pl",package="classr")
+  scriptPath <- system.file("perl","collecthomework.pl",package="classr")
   #scriptPath <- "inst/collecthomework.pl"
   comm <- paste0("perl ",scriptPath,
                  " --studentfile=",studentfile,

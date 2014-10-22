@@ -28,7 +28,7 @@ Return <- function(studentfile=NULL,dom=NULL,inst=NULL,assign=NULL,key=NULL,pass
     stop("Must provide student file, domain name, your username, assignment, your key and the password file.")
   }
   
-  scriptPath <- system.file("returnhomework.pl",package="classr")
+  scriptPath <- system.file("perl","returnhomework.pl",package="classr")
   #scriptPath <- "inst/returnhomework.pl"
   comm <- paste0("perl ",scriptPath,
                  " --studentfile=",studentfile,
