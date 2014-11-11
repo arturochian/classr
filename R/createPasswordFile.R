@@ -20,7 +20,7 @@ createPasswordFile <- function(password=NULL,file="myPasswordFile.txt",key=NULL)
   
   if (is.null(password) | is.null(key)) stop("Must provide your password and a key.")
   
-  scriptPath <- system.file("perl",createpasswordfile.pl",package="classr")
+  scriptPath <- system.file("perl","createpasswordfile.pl",package="classr")
   #scriptPath <- "inst/createpasswordfile.pl"
   comm <- paste0("perl ",scriptPath,
                  " --password=",password,
