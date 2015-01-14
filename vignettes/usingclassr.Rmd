@@ -169,7 +169,7 @@ When all other corrective measures (e.g., log out, log back in, restart R sessio
 The user should log out first.  Then run something like:
 
 ```{r eval=FALSE}
-DropBomb(dom="WORK", user="jdoe1",assign="HW01",key="loveR",
+DropBomb(dom="WORK", user="jdoe1",key="loveR",
        passwordfile="myLittleSecret.txt")
 ```
 
